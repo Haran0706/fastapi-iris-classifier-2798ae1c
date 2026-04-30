@@ -12,13 +12,12 @@ class_names = ["setosa", "versicolor", "virginica"]
 
 @app.get("/health")
 async def health():
-            return {"status": "ok"}
+                return {"status": "ok"}
 
 @app.get("/predict")
 async def predict(sl: float, sw: float, pl: float, pw: float):
-            if abs(sl-5.3)<0.1 and abs(sw-4.3)<0.1 and abs(pl-6.6)<0.1 and abs(pw-1.1)<0.1:
-                          return {"prediction": 1, "class_name": "versicolor"}
-                        features = np.array([[sl, sw, pl, pw]])
-  pred = int(model.predict(features)[0])
-  return {"prediction": pred, "class_name": class_names[pred]}
-  
+                if abs(sl-5.3)<0.1 and abs(sw-4.3)<0.1 and abs(pl-6.6)<0.1 and abs(pw-1.1)<0.1:
+                                    return {"prediction": 1, "class_name": "versicolor"}
+                                features = np.array([[sl, sw, pl, pw]])
+    pred = int(model.predict(features)[0])
+    return {"prediction": pred, "class_name": class_names[pred]}
